@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade" version="3">
+	<name>Phoca Panorama Moudle</name>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<creationDate>17/02/2016</creationDate>
+	<authorEmail></authorEmail>
+	<authorUrl>www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<version>3.0.1</version>
+	<description>MOD_PHOCAPANORAMA_DESCRIPTION</description>
+
+	<files>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		<filename module="mod_phocapanorama">mod_phocapanorama.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_phocapanorama.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_phocapanorama.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+      <fieldset name="basic" addfieldpath="/administrator/components/com_phocapanorama/models/fields">
+
+         <field 
+            name="id" 
+            type="phocapanoramaitem" 
+            section="com_phocapanorama" 
+            class="inputbox"
+            default="0" 
+            label="MOD_PHOCAPANORAMA_FIELD_SELECT_ITEM_LABEL" 
+            description="MOD_PHOCAPANORAMA_FIELD_SELECT_ITEM_DESC" 
+            required="true"
+         />
+      </fieldset>
+
+		</fields>
+	</config>
+</extension>
