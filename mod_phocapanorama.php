@@ -6,15 +6,17 @@
  * @copyright Copyright (C) Jan Pavelka www.phoca.cz
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  */
- 
+
 defined('_JEXEC') or die('Restricted access');// no direct access
 
 if (!JComponentHelper::isEnabled('com_phocapanorama', true)) {
-	return JError::raiseError(JText::_('Phoca Panorama Error'), JText::_('Phoca Panorama is not installed on your system'));
+	$app = JFactory::getApplication();
+	$app->enqueueMessage(JText::_('Phoca Panorama Error'), JText::_('Phoca Panorama is not installed on your system'), 'error');
+	return;
 }
 
 
-jimport( 'joomla.filesystem.folder' ); 
+jimport( 'joomla.filesystem.folder' );
 jimport( 'joomla.filesystem.file' );
 require_once( JPATH_ADMINISTRATOR.'/components/com_phocapanorama/helpers/phocapanoramautils.php' );
 require_once( JPATH_ADMINISTRATOR.'/components/com_phocapanorama/helpers/phocapanorama.php' );
@@ -28,7 +30,7 @@ $id		= $params->get( 'id', 0 );
 if ((int)$id < 1) {
 	echo JText::_('MOD_PHOCAPANORAMA_PANORAMA_ID_NOT_SET');
 } else {
-	
+
 	$component	= 'com_phocapanorama';
 	$pC			= JComponentHelper::getParams($component) ;
 	$document	= JFactory::getDocument();
@@ -40,9 +42,12 @@ if ((int)$id < 1) {
 	$p['display_method']		= $pC->get( 'display_method', 1 );
 	$p['file_name']				= htmlspecialchars($pC->get( 'file_name', 'tour' ));
 	$p['display_back']			= $pC->get( 'display_back', 3 );
-	$p['panoramapathrel']		= 'phocapanorama/';
-	$p['panoramapathabs']		= JPATH_ROOT .'/phocapanorama/';
-	
+
+    $path								= PhocaPanoramaUtils::getPath();
+    $this->t['panoramapathrel']			= $path['rel'];
+    $this->t['panoramapathabs']			= $path['abs'];
+
+
 	$lang = JFactory::getLanguage();
 	//$lang->load('com_phocapanorama.sys');
 	$lang->load('com_phocapanorama');
@@ -55,12 +60,12 @@ if ((int)$id < 1) {
 
 
 	JHTML::stylesheet('media/com_phocapanorama/css/style.css' );
-		
-	if ($pC['load_bootstrap'] == 1) {
+
+	if ($p['load_bootstrap'] == 1) {
 		JHTML::stylesheet('media/com_phocapanorama/bootstrap/css/bootstrap.min.css' );
 		$document->addScript(JURI::root(true).'/media/com_phocapanorama/bootstrap/js/bootstrap.min.js');
 	}
-	
+
 }
 
 require(JModuleHelper::getLayoutPath('mod_phocapanorama'));

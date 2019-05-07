@@ -1,0 +1,18 @@
+{
+	"author": "Jan Pavelka (www.phoca.cz)",
+	"authorUrl": "https://www.phoca.cz",
+	"copyright": "Jan Pavelka",
+	"license": "GNU/GPL",
+	"projectName": "PhocaPanoramaModule",
+	"extensionName": "Phoca Panorama Module",
+	"projectInitials" : "PP",
+	"description": "Phoca Panorama Module - a Joomla! CMS module which displays panoramic image in module position.",
+	"projectUrl": "https://www.phoca.cz/phoca-panorama-module",
+	"projectDocumentationUrl": "https://www.phoca.cz/documentation/category/125-phoca-panorama-module",
+	"projectMainComponent": "Phoca Panorama",
+	"projectMainComponentInfoUrl": "https://www.phoca.cz/project/phocapanorama-joomla-panorama",
+	"projectDemo" : {
+		"Demo": "https://youtu.be/3A6ljjkkL6M"
+	},
+	"projectColor": "#ff7f00"
+}
